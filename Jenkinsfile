@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/thor-eng/all.git'
+                git branch: 'main', url: 'https://github.com/thor-eng/all.git'
             }
         }
 
@@ -29,11 +29,7 @@ pipeline {
     }
 
     post {
-        success {
-            echo "✅ Build completed successfully!"
-        }
-        failure {
-            echo "❌ Build failed. Check Jenkins logs."
-        }
+        success { echo "✅ Build completed successfully!" }
+        failure { echo "❌ Build failed. Check Jenkins logs." }
     }
 }
