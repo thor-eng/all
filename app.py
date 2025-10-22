@@ -22,7 +22,7 @@ HTML_PAGE = """
   <body>
     <div class="card">
       <h1>Welcome to Flask!</h1>
-      <p>This is a normal HTML    page rendered       by a Flask app. You can change this text to anything you like.</p>
+      <p>This is a normal HTML      page rendered       by a Flask app. You can change this text to anything you like.</p>
       <p>Example list:</p>
       <ul>
         <li>Plain HTML content</li>
