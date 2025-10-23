@@ -1,5 +1,15 @@
 pipeline {
     agent any
+    environment {
+        // 👇 Set your Docker Hub credentials ID (add in Jenkins > Credentials > Global)
+        DOCKERHUB_CREDENTIALS = credentials('docker-hub-cred')
+
+        // 👇 Replace with your actual Docker Hub repo name
+        DOCKERHUB_REPO = "naveen550/last"
+
+        // 👇 Image tag
+        IMAGE_TAG = "latest"
+    }
 
     stages {
         stage('Clone Code') {
