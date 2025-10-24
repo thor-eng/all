@@ -1,14 +1,11 @@
 pipeline {
     agent any
     environment {
-        // 👇 Set your Docker Hub credentials ID (add in Jenkins > Credentials > Global)
+       environment {
         DOCKERHUB_CREDENTIALS = credentials('naveen-dockerhub')
-
-        // 👇 Replace with your actual Docker Hub repo name
         DOCKERHUB_REPO = "naveen550/last"
-
-        // 👇 Image tag
         IMAGE_TAG = "latest"
+    }
     }
 
     stages {
@@ -49,21 +46,21 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} ."
-                }
+                sh 'docker build -t naveen550/last:latest .'
             }
         }
 
-        // stage('Push to Docker Hub') {
+        stage('Login to DockerHub') {
             steps {
-                script {
-                    sh """
-                        echo "${DOCKERHUB_CREDENTIALS_PSW}" | docker login -u "${DOCKERHUB_CREDENTIALS_USR}" --password-stdin
-                        docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}
-                    """
-                }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
+        }
+
+        stage('Push Image') {
+            steps {
+                sh 'docker push naveen550/last:latest'
+            }
+        }
         }
     }
 
