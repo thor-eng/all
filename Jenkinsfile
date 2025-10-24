@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         // 👇 Set your Docker Hub credentials ID (add in Jenkins > Credentials > Global)
-        DOCKERHUB_CREDENTIALS = credentials('docker-hub-cred')
+        DOCKERHUB_CREDENTIALS = credentials('naveen-dockerhub')
 
         // 👇 Replace with your actual Docker Hub repo name
         DOCKERHUB_REPO = "naveen550/last"
