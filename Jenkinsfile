@@ -47,15 +47,15 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} ."
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} ."
+        //         }
+        //     }
+        // }
 
-        // stage('Push to Docker Hub') {
+        // // stage('Push to Docker Hub') {
         //     steps {
         //         script {
         //             sh """
